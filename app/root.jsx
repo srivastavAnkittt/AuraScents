@@ -1,4 +1,5 @@
 import {Analytics, getShopAnalytics, useNonce} from '@shopify/hydrogen';
+
 import {
   Outlet,
   useRouteError,
@@ -15,6 +16,8 @@ import resetStyles from '~/styles/reset.css?url';
 import appStyles from '~/styles/app.css?url';
 import tailwindCss from './styles/tailwind.css?url';
 import {PageLayout} from './components/PageLayout';
+
+
 
 /**
  * This is important to avoid re-fetching root queries on sub-navigations
@@ -46,23 +49,35 @@ export const shouldRevalidate = ({formMethod, currentUrl, nextUrl}) => {
  * https://github.com/remix-run/remix/issues/9242
  */
 export function links() {
-  return [
-    {
-      rel: 'preconnect',
-      href: 'https://cdn.shopify.com',
-    },
-    {
-      rel: 'preconnect',
-      href: 'https://shop.app',
-    },
-    {rel: 'icon', type: 'image/svg+xml', href: favicon},
+    return [
+    { rel: 'preconnect', href: 'https://cdn.shopify.com' },
+    { rel: 'preconnect', href: 'https://shop.app' },
+    { rel: 'icon', type: 'image/svg+xml', href: favicon },
+
+    // 🔥 CSS FILES (ORDER MATTERS)
+    { rel: 'stylesheet', href: resetStyles },
+    { rel: 'stylesheet', href: tailwindCss },
+    { rel: 'stylesheet', href: appStyles },
   ];
+
+  // return [
+  //   {
+  //     rel: 'preconnect',
+  //     href: 'https://cdn.shopify.com',
+  //   },
+  //   {
+  //     rel: 'preconnect',
+  //     href: 'https://shop.app',
+  //   },
+  //   {rel: 'icon', type: 'image/svg+xml', href: favicon},
+  // ];
 }
 
 /**
  * @param {Route.LoaderArgs} args
  */
 export async function loader(args) {
+  console.log('Root loader called');
   // Start fetching non-critical data without blocking time to first byte
   const deferredData = loadDeferredData(args);
 

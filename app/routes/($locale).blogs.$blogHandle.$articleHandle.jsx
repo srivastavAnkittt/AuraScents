@@ -1,6 +1,7 @@
 import {useLoaderData} from 'react-router';
 import {Image} from '@shopify/hydrogen';
 import {redirectIfHandleIsLocalized} from '~/lib/redirect';
+import BlogArticleCustom from '~/components/BlogArticleCustom';
 
 /**
  * @type {Route.MetaFunction}
@@ -85,7 +86,8 @@ export default function Article() {
 
   return (
     <div className="article">
-      <h1>
+      <BlogArticleCustom article={article}  />
+      {/* <h1>
         {title}
         <div>
           <time dateTime={article.publishedAt}>{publishedDate}</time> &middot;{' '}
@@ -97,7 +99,7 @@ export default function Article() {
       <div
         dangerouslySetInnerHTML={{__html: contentHtml}}
         className="article"
-      />
+      /> */}
     </div>
   );
 }
@@ -115,6 +117,7 @@ const ARTICLE_QUERY = `#graphql
       articleByHandle(handle: $articleHandle) {
         handle
         title
+        content
         contentHtml
         publishedAt
         author: authorV2 {

@@ -23,6 +23,7 @@ export async function loader(args) {
   return {...deferredData, ...criticalData};
 }
 
+
 /**
  * Load data necessary for rendering content above the fold. This is the critical data
  * needed to render the page. If it's unavailable, the whole page should 400 or 500 error.
@@ -56,10 +57,12 @@ function loadDeferredData({context}) {
 export default function Collection() {
   /** @type {LoaderReturnData} */
   const {products} = useLoaderData();
+  console.log("products",products);
 
   return (
     <div className="collection">
-      <h1>Products</h1>
+      <h1>Productsss</h1>
+      
       <PaginatedResourceSection
         connection={products}
         resourcesClassName="products-grid"
@@ -100,6 +103,12 @@ const COLLECTION_ITEM_FRAGMENT = `#graphql
         ...MoneyCollectionItem
       }
     }
+        variants(first: 1) {
+    nodes {
+      id
+      availableForSale
+    }
+  }
   }
 `;
 

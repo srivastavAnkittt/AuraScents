@@ -30,7 +30,7 @@ export function AddToCartButton({
             onClick={onClick}
             disabled={disabled ?? fetcher.state !== 'idle'}
           >
-            {children}
+           Add To Cart
           </button>
         </>
       )}
