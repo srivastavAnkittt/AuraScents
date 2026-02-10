@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
   "dev": "shopify hydrogen dev --codegen",
-  "build": "hydrogen build",
+  "build": "npx hydrogen build",
   "start": "hydrogen start",
   "preview": "hydrogen preview",
   "lint": "eslint --no-error-on-unmatched-pattern .",
