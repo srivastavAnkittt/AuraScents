@@ -5,12 +5,13 @@
   "version": "2025.7.3",
   "type": "module",
   "scripts": {
-    "build": "shopify hydrogen build --codegen",
-    "dev": "shopify hydrogen dev --codegen",
-    "preview": "shopify hydrogen preview --build",
-    "lint": "eslint --no-error-on-unmatched-pattern .",
-    "codegen": "shopify hydrogen codegen && react-router typegen"
-  },
+  "dev": "shopify hydrogen dev --codegen",
+  "build": "hydrogen build",
+  "start": "hydrogen start",
+  "preview": "hydrogen preview",
+  "lint": "eslint --no-error-on-unmatched-pattern .",
+  "codegen": "shopify hydrogen codegen && react-router typegen"
+},
   "prettier": "@shopify/prettier-config",
   "dependencies": {
     "@shopify/hydrogen": "2025.7.3",
